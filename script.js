@@ -3,7 +3,7 @@ const WIDTH = window.innerWidth,
       HEIGHT = window.innerHeight;
 
 // maximum number of points visible per frame
-var numOfPoints = 100;    
+var numOfPoints = 200;    
 
 // arrays for storing point radius and position data
 var pointsX, pointsY, pointsRadius;
@@ -43,7 +43,7 @@ function init(c) {
 function update() {
 
   // update angle
-  angle += 0.08;
+  angle += Math.PI * 4 / numOfPoints;
   if (angle > Math.PI * 2) {
     angle -= Math.PI * 2;
   }
@@ -57,7 +57,7 @@ function update() {
     // calculate coordintates
     var x = WIDTH / 2 + Math.cos(angle - (i + 1) / numOfPoints * Math.PI * 2) * distance;
     var y = HEIGHT / 2 + Math.sin(angle - (i + 1) / numOfPoints * Math.PI * 2) * distance;
-    var radius = distance / 50;
+    var radius = distance / numOfPoints * 2;
 
     // assign calculated values
     pointsX[i] = x;
@@ -79,7 +79,7 @@ function render(c) {
     ) {
 
       // draw single point
-      c.fillStyle = "white";
+      c.fillStyle = rgb(255, 255, 255);
       c.beginPath();
       c.arc(pointsX[i], pointsY[i], pointsRadius[i], 0, 2 * Math.PI);
       c.fill();
@@ -90,8 +90,13 @@ function render(c) {
 
   // screen fade out effect
   c.fillStyle = "black";
-  c.globalAlpha = 0.06;
+  c.globalAlpha = 0.05;
   c.fillRect(0, 0, WIDTH, HEIGHT)
   c.globalAlpha = 1;
 
+}
+
+// function for generating rgba() string
+function rgb(r, g, b) {
+  return "rgba(" + [r, g, b].join(",") + ",1)";
 }
