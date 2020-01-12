@@ -51,7 +51,8 @@ function update() {
   for (var i = 0; i < numOfPoints; i++) {
 
     // calculate distance from center of screen
-    var distance = (i + 1) / numOfPoints * Math.sqrt(WIDTH * WIDTH + HEIGHT * HEIGHT) / 2;
+    //var distance = (i + 1) / numOfPoints * Math.sqrt(WIDTH * WIDTH + HEIGHT * HEIGHT) / 2;
+    var distance = Math.pow(Math.sqrt(WIDTH * WIDTH + HEIGHT * HEIGHT), i / numOfPoints);
 
     // calculate coordintates
     var x = WIDTH / 2 + Math.cos(angle - (i + 1) / numOfPoints * Math.PI * 2) * distance;
@@ -73,7 +74,7 @@ function render(c) {
     if ((pointsX[i] >= 0 && pointsX[i] <= WIDTH) && (pointsY[i] >= 0 && pointsY[i] <= HEIGHT)) {
 
       // calculate radius
-      var radius = 1 + (i / numOfPoints / 0.25);
+      var radius = Math.pow(Math.sqrt(WIDTH * WIDTH + HEIGHT * HEIGHT), i / numOfPoints) / 50;
 
       // draw single point
       c.fillStyle = "white";
