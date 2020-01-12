@@ -2,10 +2,13 @@
 const WIDTH = window.innerWidth, 
       HEIGHT = window.innerHeight;
 
-
+// maximum number of points visible per frame
 var numOfPoints = 100;    
 
+// arrays for storing point position data
 var pointsX, pointsY;
+
+// current angle to draw points from
 var angle = 0;
 
 window.onload = function(e) {
@@ -47,16 +50,18 @@ function update() {
   // update positions of points
   for (var i = 0; i < numOfPoints; i++) {
 
+    // calculate distance from center of screen
     var distance = (i + 1) / numOfPoints * Math.sqrt(WIDTH * WIDTH + HEIGHT * HEIGHT) / 2;
 
+    // calculate coordintates
     var x = WIDTH / 2 + Math.cos(angle - (i + 1) / numOfPoints * Math.PI * 2) * distance;
     var y = HEIGHT / 2 + Math.sin(angle - (i + 1) / numOfPoints * Math.PI * 2) * distance;
 
+    // assign calculated values
     pointsX[i] = x;
     pointsY[i] = y;
 
   }
-
 }
 
 function render(c) {
@@ -64,6 +69,7 @@ function render(c) {
   // draw points at their current positions
   for (var i = 0; i < numOfPoints; i++) {
 
+    // only draw points that are visible in the window
     if ((pointsX[i] >= 0 && pointsX[i] <= WIDTH) && (pointsY[i] >= 0 && pointsY[i] <= HEIGHT)) {
 
       c.fillStyle = "white";
@@ -73,7 +79,6 @@ function render(c) {
       c.closePath();
   
     }
-
   }
 
   // screen fade out effect
