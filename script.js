@@ -66,7 +66,7 @@ function render(c) {
 
     c.fillStyle = "white";
     c.beginPath();
-    c.arc(pointsX[i], pointsY[i], 4, 0, 2 * Math.PI);
+    c.arc(pointsX[i], pointsY[i], 2, 0, 2 * Math.PI);
     c.fill();
     c.closePath();
 
