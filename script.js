@@ -39,7 +39,7 @@ function init(c) {
 function update() {
 
   // update angle
-  angle += 0.1;
+  angle += 0.08;
   if (angle > Math.PI * 2) {
     angle -= Math.PI * 2;
   }
@@ -47,7 +47,7 @@ function update() {
   // update positions of points
   for (var i = 0; i < numOfPoints; i++) {
 
-    var distance = (i + 1) / numOfPoints * HEIGHT / 2;
+    var distance = (i + 1) / numOfPoints * Math.sqrt(WIDTH * WIDTH + HEIGHT * HEIGHT) / 2;
 
     var x = WIDTH / 2 + Math.cos(angle - (i + 1) / numOfPoints * Math.PI * 2) * distance;
     var y = HEIGHT / 2 + Math.sin(angle - (i + 1) / numOfPoints * Math.PI * 2) * distance;
