@@ -72,9 +72,13 @@ function render(c) {
     // only draw points that are visible in the window
     if ((pointsX[i] >= 0 && pointsX[i] <= WIDTH) && (pointsY[i] >= 0 && pointsY[i] <= HEIGHT)) {
 
+      // calculate radius
+      var radius = 1 + (i / numOfPoints / 0.25);
+
+      // draw single point
       c.fillStyle = "white";
       c.beginPath();
-      c.arc(pointsX[i], pointsY[i], 2, 0, 2 * Math.PI);
+      c.arc(pointsX[i], pointsY[i], radius, 0, 2 * Math.PI);
       c.fill();
       c.closePath();
   
