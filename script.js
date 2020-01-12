@@ -64,11 +64,15 @@ function render(c) {
   // draw points at their current positions
   for (var i = 0; i < numOfPoints; i++) {
 
-    c.fillStyle = "white";
-    c.beginPath();
-    c.arc(pointsX[i], pointsY[i], 2, 0, 2 * Math.PI);
-    c.fill();
-    c.closePath();
+    if ((pointsX[i] >= 0 && pointsX[i] <= WIDTH) && (pointsY[i] >= 0 && pointsY[i] <= HEIGHT)) {
+
+      c.fillStyle = "white";
+      c.beginPath();
+      c.arc(pointsX[i], pointsY[i], 2, 0, 2 * Math.PI);
+      c.fill();
+      c.closePath();
+  
+    }
 
   }
 
