@@ -73,7 +73,10 @@ function render(c) {
   for (var i = 0; i < numOfPoints; i++) {
 
     // only draw points that are visible in the window
-    if ((pointsX[i] >= 0 && pointsX[i] <= WIDTH) && (pointsY[i] >= 0 && pointsY[i] <= HEIGHT)) {
+    if (
+      (pointsX[i] >= -pointsRadius[i] && pointsX[i] <= WIDTH + pointsRadius[i]) && 
+      (pointsY[i] >= -pointsRadius[i] && pointsY[i] <= HEIGHT + pointsRadius[i])
+    ) {
 
       // draw single point
       c.fillStyle = "white";
