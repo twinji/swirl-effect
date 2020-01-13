@@ -11,6 +11,14 @@ var pointsX, pointsY, pointsRadius;
 // current angle to draw points from
 var angle = 0;
 
+// colors to cycle through
+var colors = [
+  "white"
+];
+
+// currently assigned color
+var currentColorIndex;
+
 window.onload = function(e) {
 
     // canvas setup
@@ -38,6 +46,9 @@ function init(c) {
   pointsY = new Array(numOfPoints);
   pointsRadius = new Array(numOfPoints);
 
+  // initialize color
+  currentColorIndex = 0;
+
 }
 
 function update() {
@@ -46,6 +57,13 @@ function update() {
   angle += Math.PI * 4 / numOfPoints;
   if (angle > Math.PI * 2) {
     angle -= Math.PI * 2;
+  }
+
+  // update color
+  if (currentColorIndex < colors.length - 1) {
+    currentColorIndex++;
+  } else {
+    currentColorIndex = 0;
   }
 
   // update positions of points
@@ -58,7 +76,7 @@ function update() {
     pointsX[i] = WIDTH / 2 + Math.cos(angle - (i + 1) / numOfPoints * Math.PI * 2) * distance;
     pointsY[i] = HEIGHT / 2 + Math.sin(angle - (i + 1) / numOfPoints * Math.PI * 2) * distance;
     pointsRadius[i] = distance / numOfPoints * 2;
-    
+
   }
 }
 
@@ -74,7 +92,7 @@ function render(c) {
     ) {
 
       // draw single point
-      c.fillStyle = rgb(255, 255, 255);
+      c.fillStyle = colors[currentColorIndex];
       c.beginPath();
       c.arc(pointsX[i], pointsY[i], pointsRadius[i], 0, 2 * Math.PI);
       c.fill();
