@@ -13,7 +13,8 @@ var angle = 0;
 
 // colors to cycle through
 var colors = [
-  "white"
+  "crimson",
+  "darkorchid"
 ];
 
 // currently assigned color
