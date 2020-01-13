@@ -54,16 +54,11 @@ function update() {
     // calculate distance from center of screen
     var distance = Math.pow(Math.sqrt(WIDTH * WIDTH + HEIGHT * HEIGHT), i / numOfPoints);
 
-    // calculate coordintates
-    var x = WIDTH / 2 + Math.cos(angle - (i + 1) / numOfPoints * Math.PI * 2) * distance;
-    var y = HEIGHT / 2 + Math.sin(angle - (i + 1) / numOfPoints * Math.PI * 2) * distance;
-    var radius = distance / numOfPoints * 2;
-
-    // assign calculated values
-    pointsX[i] = x;
-    pointsY[i] = y;
-    pointsRadius[i] = radius;
-
+    // calculate and assign calculated values
+    pointsX[i] = WIDTH / 2 + Math.cos(angle - (i + 1) / numOfPoints * Math.PI * 2) * distance;
+    pointsY[i] = HEIGHT / 2 + Math.sin(angle - (i + 1) / numOfPoints * Math.PI * 2) * distance;
+    pointsRadius[i] = distance / numOfPoints * 2;
+    
   }
 }
 
@@ -91,7 +86,7 @@ function render(c) {
   // screen fade out effect
   c.fillStyle = "black";
   c.globalAlpha = 0.05;
-  c.fillRect(0, 0, WIDTH, HEIGHT)
+  c.fillRect(0, 0, WIDTH, HEIGHT);
   c.globalAlpha = 1;
 
 }
