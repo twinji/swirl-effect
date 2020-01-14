@@ -82,6 +82,12 @@ function update() {
 
 function render(c) {
 
+  // screen fade out effect
+  c.fillStyle = "black";
+  c.globalAlpha = 0.05;
+  c.fillRect(0, 0, WIDTH, HEIGHT);
+  c.globalAlpha = 1;
+
   // draw points at their current positions
   for (var i = 0; i < numOfPoints; i++) {
 
@@ -100,13 +106,6 @@ function render(c) {
   
     }
   }
-
-  // screen fade out effect
-  c.fillStyle = "black";
-  c.globalAlpha = 0.05;
-  c.fillRect(0, 0, WIDTH, HEIGHT);
-  c.globalAlpha = 1;
-
 }
 
 // function for generating rgba() string
